@@ -15,7 +15,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  servoL.writeMicroseconds(1640);      // Steer forward
+  servoL.writeMicroseconds(1575);      // Veer Left
   servoR.writeMicroseconds(1390);
   delay(10000);
   servoL.detach(); // Disconnect the servos.
