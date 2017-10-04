@@ -50,7 +50,7 @@ void loop()
 {
   DDRD |= B11110000;                         // Set direction of Arduino pins D4-D7 as OUTPUT
   PORTD |= B11110000;                        // Set level of Arduino pins D4-D7 to HIGH
-  delayMicroseconds(230);                    // Short delay to allow capacitor charge in QTI module
+  delayMicroseconds(500);                    // Short delay to allow capacitor charge in QTI module
   DDRD &= B00001111;                         // Set direction of pins D4-D7 as INPUT
   PORTD &= B00001111;                        // Set level of pins D4-D7 to LOW
   delayMicroseconds(230);                    // Short delay
@@ -63,15 +63,15 @@ void loop()
   int vL, vR;
   switch(pins)                               // Compare pins to known line following states
   {
-    case B1000: //Hard Turn Right                        
+    case B0001: //Hard Turn Right                        
       vL = 100;                             // -100 to 100 indicate course correction values
       vR = -100;                              // -100: full reverse; 0=stopped; 100=full forward
       break;
-    case B1100: //Pivot Right                       
+    case B0011: //Pivot Right                       
       vL = 100;
       vR = 0;
       break;
-    case B0100: //Veer Right                        
+    case B0010: //Veer Right                        
       vL = 100;
       vR = 70;
       break;
@@ -79,15 +79,15 @@ void loop()
       vL = 140;
       vR = 110;
       break;
-    case B0010: //Veer Left                        
+    case B0100: //Veer Left                        
       vL = 75;
       vR = 110;
       break;
-    case B0011: //Pivot Left                        
+    case B1100: //Pivot Left                        
       vL = 0;
       vR = 100;
       break;
-    case B0001: //Hard Turn Right                        
+    case B1000: //Hard Turn Right                        
       vL = -100;
       vR = 100;
       break;
